@@ -1,0 +1,44 @@
+/*********************************************
+ * 
+ * mixin/media-query
+ * 
+*********************************************/
+/*--------------------------------
+
+	use
+	
+--------------------------------*/
+@use "../setting";
+
+
+
+/*--------------------------------
+
+	ブレイクポイント
+
+--------------------------------*/
+/* スマートフォンだけmax-width */
+// スマートフォン
+@mixin mq-sp {
+	@media screen and (max-width:(setting.$bp-sp)) {
+		@content;
+	}
+}
+// タブレット
+@mixin mq-tab {
+	@media screen and (min-width:(setting.$bp-tab)) {
+		@content;
+	}
+}
+// PC
+@mixin mq-pc {
+	@media screen and (min-width:(setting.$bp-pc)) {
+		@content;
+	}
+}
+// PC（大きめ）
+@mixin mq-large {
+	@media screen and (min-width:(setting.$bp-large)) {
+		@content;
+	}
+}

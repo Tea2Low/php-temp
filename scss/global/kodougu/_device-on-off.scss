@@ -1,0 +1,70 @@
+/*********************************************
+ * 
+ * kodougu/_device-on-off
+ * 
+*********************************************/
+/*--------------------------------
+
+	use
+	
+--------------------------------*/
+@use "../setting";
+@use "../mixin"; // mixin
+
+
+
+/* --------------------------------
+  
+	各デバイスでのON / OFF
+
+	主に改行とかで使用。
+
+-------------------------------- */
+// スマートフォンでのみ有効
+.visible-sp {
+	display: inline;
+
+	@include mixin.mq-tab {
+		display: none;
+	}
+}
+
+// スマートフォンとタブレットで有効
+.visible-sp-tab {
+	display: inline;
+
+	@include mixin.mq-pc {
+		display: none;
+	}
+}
+
+// タブレットサイズのみ有効な改行
+.visible-tab {
+	display: none;
+
+	@include mixin.mq-tab {
+		display: inline;
+	}
+
+	@include mixin.mq-pc {
+		display: none;
+	}
+}
+
+// タブレット以上のサイズで有効な改行
+.visible-tab-pc {
+	display: none;
+
+	@include mixin.mq-tab {
+		display: inline;
+	}
+}
+
+// PC以上のサイズで有効な改行
+.visible-pc {
+	display: none;
+
+	@include mixin.mq-pc {
+		display: inline;
+	}
+}

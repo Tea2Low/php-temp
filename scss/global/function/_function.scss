@@ -1,0 +1,44 @@
+/*********************************************
+ * 
+ * function/function
+ * 
+*********************************************/
+/*--------------------------------
+
+	use
+	
+--------------------------------*/
+@use "../setting";
+@use "sass:math"; // 計算用モジュール
+
+
+/* --------------------------------
+  
+	数値から単位を除去して返す
+
+-------------------------------- */
+@function func-strip-unit($hikisuu) {
+  @if type-of($hikisuu) == 'number' and not unitless($hikisuu) {
+    @return math.div($hikisuu, ($hikisuu * 0 + 1));
+  }
+  @return $hikisuu;
+}
+
+
+
+/* ----------------------------------------------------------
+  
+	画面サイズに合わせて、設定した数値を増減させる
+	※px計算
+	※viewportの基準となる値の設定が必要
+	※画面幅ではなく、viewportである点に注意。
+	iPhone SE（第2世代）とかなら、375px
+
+	$hikisuu1：可変にしたい数値の基準値
+	（たとえば、viewportが375pxのときのフォントサイズ16pxなど）
+	$hikisuu2：基準値を算出した際のviewportのサイズ
+
+---------------------------------------------------------- */
+@function func-kahen-calc($hikisuu1,$hikisuu2) {
+	@return math.div(100vw*$hikisuu1,func-strip-unit($hikisuu2))
+}

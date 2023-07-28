@@ -1,0 +1,111 @@
+/*************************************************
+ * メニュー（アニメーション／表示・非表示調整）
+*************************************************/
+/*--------------------------------
+
+	use
+	
+--------------------------------*/
+@use "../../global";
+
+
+
+/*************************************************
+ * 
+ * 
+ * メニュー内容
+ * 
+ * 
+*************************************************/
+/*--------------------------------
+
+	メニュー内容（非表示）
+	
+--------------------------------*/
+nav > .menu {
+	opacity: 0;
+	visibility: hidden;
+
+	transition: all .6s;
+}
+
+/*--------------------------------
+
+	メニュー内容（表示）
+	
+--------------------------------*/
+nav > .menu.active {
+	opacity: 1;
+	visibility: visible;
+
+	transition: all .6s;
+}
+
+
+
+
+
+nav > .menu li {
+	opacity: 0;
+	visibility: hidden;
+
+	transition: all .6s;
+	// transition: all 0.1s;
+
+	& > a {
+		opacity: 0;
+		visibility: hidden;
+
+		transition: all .6s;
+	}
+}
+
+nav > .menu.active li {
+	opacity: 1;
+	visibility: visible;
+
+	transition: all .6s;
+	// transition: all 2.0s;
+
+	& > a {
+		opacity: 1;
+		visibility: visible;
+
+		transition: all .6s;
+	}
+}
+
+
+
+
+
+/*************************************************
+ * 
+ * 
+ * PC以上のサイズ
+ * 
+ * 
+*************************************************/
+@include global.mq-pc {
+
+	nav > .menu {
+		opacity: 1;
+		visibility: visible;
+
+		transition: all .6s;
+	}
+
+	nav > .menu li {
+		opacity: 1;
+		visibility: visible;
+
+		transition: all .6s;
+
+		& > a {
+			opacity: 1;
+			visibility: visible;
+
+			transition: all .6s;
+		}
+	}
+}

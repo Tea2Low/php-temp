@@ -1,0 +1,199 @@
+/*********************************************
+ * 
+ * kodougu/kodougu
+ * 
+*********************************************/
+/*--------------------------------
+
+	use
+	
+--------------------------------*/
+@use "../setting";
+@use "../mixin"; // mixin
+
+
+
+/* --------------------------------
+  
+	Google Fonts Shippori Mincho
+	しっぽり明朝
+
+-------------------------------- */
+.minchou {
+	font-family: 'Shippori Mincho', serif;
+}
+
+
+
+/* --------------------------------
+  
+	改行
+
+-------------------------------- */
+// スマートフォンでのみ有効
+.br-sp {
+	display: inline;
+
+	@include mixin.mq-tab {
+		display: none;
+	}
+}
+
+// タブレット以上のサイズで有効な改行
+.br-tab {
+	display: none;
+
+	@include mixin.mq-tab {
+		display: inline;
+	}
+}
+
+// タブレットサイズのみ有効な改行
+.br-tab-only {
+	display: none;
+
+	@include mixin.mq-tab {
+		display: inline;
+	}
+
+	@include mixin.mq-pc {
+		display: none;
+	}
+}
+
+// PC〜有効な改行
+.br-pc {
+	display: none;
+
+	@include mixin.mq-pc {
+		display: inline;
+	}
+}
+
+// PC〜無効な改行
+.br-pc-invalid {
+	display: inline;
+
+	@include mixin.mq-pc {
+		display: none;
+	}
+}
+
+
+
+/* --------------------------------
+  
+	間隔広めの点線
+
+-------------------------------- */
+.kankaku-hirome-border {
+	background-image : linear-gradient(to right, #fff, #fff 2px, transparent 2px, transparent 8px);  /* 幅2の線を作る */
+    background-size: 8px 2px;          /* グラデーションの幅・高さを指定 */
+    background-position: left bottom;  /* 背景の開始位置を指定 */
+    background-repeat: repeat-x;       /* 横向きにのみ繰り返す */
+}
+
+
+
+/* --------------------------------
+  
+	マウスオーバー
+
+-------------------------------- */
+.mouse-over {
+	transition: all 0.5s;
+
+	@include mixin.link-off {
+		opacity: 1.0;
+	}
+
+	@include mixin.link-on {
+		opacity: 0.4;
+	}
+}
+
+
+
+/* --------------------------------
+  
+	スクロールを促す矢印
+
+-------------------------------- */
+/*=== 9-1-4 矢印が動いてスクロールを促す  ====*/
+
+/*スクロールダウン全体の場所*/
+.scrolldown4{
+    /*描画位置※位置は適宜調整してください*/
+	position:absolute;
+	// top:-50px;
+	bottom:5%;
+	// bottom:1%;
+	right:50%;
+    /*矢印の動き1秒かけて永遠にループ*/
+	animation: arrowmove 1s ease-in-out infinite;
+
+	z-index: 99;
+}
+
+/*下からの距離が変化して全体が下→上→下に動く*/
+@keyframes arrowmove{
+	//    0%{top:-30px;}
+    //   50%{top:-50px;}
+    //  100%{top:-30px;}
+
+      0%{bottom:3%;}
+      50%{bottom:5%;}
+     100%{bottom:3%;}
+
+	//    0%{bottom:1%;}
+    //   50%{bottom:3%;}
+    //  100%{bottom:1%;}
+ }
+
+/*Scrollテキストの描写*/
+.scrolldown4 span{
+    /*描画位置*/
+	position: absolute;
+	z-index: 99;
+	// top: -20px;
+	right: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	// left:-20px;
+	// bottom:0;
+	bottom:10px;
+    /*テキストの形状*/
+	color: #eee;
+	font-size: 1.2rem;
+	// font-size: 0.7rem;
+	letter-spacing: 0.05em;
+
+	/*縦書き設定*/
+	// -ms-writing-mode: tb-rl;
+    // -webkit-writing-mode: vertical-rl;
+    // writing-mode: vertical-rl;
+
+	width: 7.5em;
+	text-align: center;
+
+	// border: 1px solid green;
+}
+
+/* 矢印の描写 */
+.scrolldown4:before {
+    content: '';
+	width: 24px;
+	height: 24px;
+	border: 0;
+	border-bottom: solid 2px #fff;
+	border-right: solid 2px #fff;
+	position: absolute;
+	top: 50%;
+	// left: 0;
+	margin-top: -6px;
+	// transform: rotate(45deg);
+
+	right: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(45deg);
+}

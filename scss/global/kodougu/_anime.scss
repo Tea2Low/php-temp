@@ -1,0 +1,43 @@
+/*********************************************
+ * 
+ * kodougu/kodougu
+ * 
+*********************************************/
+/*--------------------------------
+
+	use
+	
+--------------------------------*/
+@use "../setting";
+@use "../mixin"; // mixin
+
+
+
+.fade-in {
+	opacity: 0;
+	transition-duration: 1500ms;
+	// transition-duration: 500ms;
+	transition-property: opacity, transform;
+}
+
+.fade-in-up {
+	// transform: translate(0, 100px);
+	transform: translate(0, 50px);
+}
+
+.fade-in-down {
+	transform: translate(0, -50px);
+}
+
+.fade-in-left {
+	transform: translate(-50px, 0);
+}
+
+.fade-in-right {
+	transform: translate(50px, 0);
+}
+
+.scroll-in {
+	opacity: 1;
+	transform: translate(0, 0);
+}

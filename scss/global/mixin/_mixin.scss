@@ -1,0 +1,142 @@
+/*********************************************
+ * 
+ * mixin
+ * breakpoint……専用SCSSに。
+ * 
+*********************************************/
+/*--------------------------------
+
+	use
+	
+--------------------------------*/
+@use "../setting";
+
+
+
+/*--------------------------------
+
+	リンク通常時とマウスオーバー時
+	
+--------------------------------*/
+// リンク：通常時
+@mixin link-off {
+    &:link,
+    &:visited {
+        @content;
+    }
+}
+
+// リンク：マウスオーバー時
+@mixin link-on {
+    &:hover,
+    &:active {
+        @content;
+    }
+}
+
+
+
+/*-----------------------------------------
+
+	グラデーション 背景2色
+    ●$hikisuu-houkou……方向（to top や to left 等）
+    ●$hikisuu1（色1）……rgba(色名orカラーコード,透過率)
+    ●$hikisuu2（色2）……rgba(色名orカラーコード,透過率)
+	
+-----------------------------------------*/
+@mixin gradation-2color($hikisuu-houkou, $hikisuu1, $hikisuu2) {
+    background: linear-gradient(
+        to $hikisuu-houkou,
+        $hikisuu1,
+        $hikisuu2
+    );
+}
+
+
+
+/*-----------------------------------------
+
+	グラデーション 背景3色
+    ●$hikisuu-houkou……方向（top や left 等）
+    ●$hikisuu1……色1
+    ●$hikisuu2……色2
+    ●$hikisuu3……色3
+	
+-----------------------------------------*/
+@mixin gradation-3color($hikisuu-houkou, $hikisuu1, $hikisuu2, $hikisuu3) {
+    background: linear-gradient(
+        to $hikisuu-houkou,
+        $hikisuu1,
+        $hikisuu2,
+        $hikisuu3
+    );
+}
+
+
+
+/* -----------------------------------------
+
+	光彩
+    text-shadowを応用したもの。
+
+    kousai(右距離／下距離, ぼかしの大きさ, 光彩の色)
+
+    ●$hikisuu-position……右距離／下距離
+    ●$hikisuu-bokashi……ぼかしの大きさ
+    ●$hikisuu-color……光彩の色
+	
+----------------------------------------- */
+@mixin kousai($hikisuu-position, $hikisuu-bokashi, $hikisuu-color) {
+    text-shadow: $hikisuu-position*1px  $hikisuu-position*1px $hikisuu-bokashi*1px $hikisuu-color,
+    $hikisuu-position*-1px $hikisuu-position*1px $hikisuu-bokashi*1px $hikisuu-color,
+    $hikisuu-position*1px $hikisuu-position*-1px $hikisuu-bokashi*1px $hikisuu-color,
+    $hikisuu-position*-1px $hikisuu-position*-1px $hikisuu-bokashi*1px $hikisuu-color;
+}
+
+
+
+/* --------------------------------
+  
+	テキストとの間隔広めの下線
+
+-------------------------------- */
+/* 点線 */
+@mixin border-dotted-manual($hikisuu-width, $hikisuu-position, $hikisuu-color) {
+	background-image : linear-gradient(to right, $hikisuu-color, $hikisuu-color $hikisuu-width, transparent $hikisuu-width, transparent $hikisuu-position);  /* 幅2の線を作る */
+    background-size: $hikisuu-position $hikisuu-width;  /* グラデーションの幅・高さを指定 */
+    background-position: left bottom;                   /* 背景の開始位置を指定 */
+    background-repeat: repeat-x;                        /* 横向きにのみ繰り返す */
+}
+
+/* 直線 */
+@mixin border-solid-manual($hikisuu-width, $hikisuu-position, $hikisuu-color) {
+	background-image : linear-gradient(to right, $hikisuu-color, $hikisuu-color $hikisuu-width, $hikisuu-color $hikisuu-width);  /* 幅2の線を作る */
+    background-size: $hikisuu-position $hikisuu-width;  /* グラデーションの幅・高さを指定 */
+    background-position: left bottom;                   /* 背景の開始位置を指定 */
+    background-repeat: repeat-x;                        /* 横向きにのみ繰り返す */
+}
+
+
+
+/* --------------------------------
+  
+	可変式ぶら下げ
+    
+    ●$hikisuu……サイズ指定
+
+-------------------------------- */
+@mixin burasage($hikisuu) {
+    margin-left: $hikisuu;
+    text-indent: $hikisuu * -1;
+}
+
+
+
+/* --------------------------------
+  
+	蛍光ペン マーカー
+
+-------------------------------- */
+@mixin marker-yellow {
+    background:linear-gradient(transparent 60%, #ff6 60%);
+}

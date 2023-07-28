@@ -1,0 +1,42 @@
+/*********************************************
+ * 
+ * foundation/fonts
+ * 
+ * フォントのインポートと設定
+ * 
+*********************************************/
+
+
+
+/*--------------------------------
+
+	Noto Sans Japanese
+	
+--------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+
+/*--------------------------------
+
+	しっぽり明朝
+	
+--------------------------------*/
+// @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&display=swap');
+
+
+
+body {
+	/* ゴシック */
+	font-family: 'Noto Sans JP', sans-serif;
+	// 明朝体
+	// font-family: 'Shippori Mincho', serif;
+}
+
+main {
+	/* ゴシック */
+	font-family: 'Noto Sans JP', sans-serif;
+
+    // 明朝体
+    // font-family: 'Shippori Mincho', serif;
+}

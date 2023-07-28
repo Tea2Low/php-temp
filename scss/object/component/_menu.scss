@@ -1,0 +1,262 @@
+/*************************************************
+ * メニュー
+*************************************************/
+/*--------------------------------
+
+	use
+	
+--------------------------------*/
+@use "../../global";
+
+
+
+/*************************************************
+ * 
+ * 
+ * 基本設定／スマートフォン
+ * 
+ * 
+*************************************************/
+/*--------------------------------
+
+	一番外側
+	
+--------------------------------*/
+nav {
+	position: fixed;
+	inset: 0 auto auto auto;
+	
+	width: 100%;
+	padding: 0;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	
+	border-radius: 5px;
+
+	color: #b23015;
+}
+
+
+
+
+
+/*--------------------------------
+
+	ロゴ
+	
+--------------------------------*/
+nav > .logo {
+	width: 100%;
+	padding: 10px 0 5px 10px;
+
+	z-index: 4;
+	// z-index: 1;
+
+	background-color: rgba(255, 255, 255, 0.8);
+	backdrop-filter: blur(4px);
+
+	box-shadow: 0px 7px 7px -6px rgba(0, 0, 0, 0.3);
+
+	& > a > img {
+		width: 150px;
+	}
+}
+
+
+
+
+
+/*************************************************
+ * 
+ * 
+ * メニュー内容
+ * 
+ * 
+*************************************************/
+/*--------------------------------
+
+	メニュー内容（非表示）
+	
+--------------------------------*/
+nav > .menu {
+	width: 100%;
+	height: 100vh;
+	list-style: none;
+
+	position: absolute;
+	inset: 0;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	z-index: 5;
+	// z-index: 2;
+
+	background-image: url(../img/product/image-tarako-kiriko2.jpg);
+	background-size: cover;
+	background-position : center;
+
+	margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+/*--------------------------------
+
+	メニュー内容（表示）
+	
+--------------------------------*/
+nav > .menu.active {
+	display: flex;
+	flex-direction: column;
+	z-index: 5;
+	// z-index: 2;
+}
+
+nav > .menu::before {
+	position: absolute;
+	content: '';
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.9);
+	backdrop-filter: blur(10px);
+	
+	z-index: 2;
+	// z-index: -1;
+}
+
+
+
+
+
+nav > .menu li {
+	margin: 15px 0;
+	text-align: center;
+
+	display: block;
+
+	z-index: 5;
+
+	& > a {
+		font-size: 2.5rem;
+		// font-size: 3.0rem;
+		font-weight: 500;
+		color: #b23015;
+		text-decoration: none;
+	}
+}
+
+nav > .menu.active li {
+	display: block;
+
+	z-index: 5;
+}
+
+nav > .menu li.logo-menu {
+	// position: absolute;
+	// inset: 10px auto auto 10px;
+	margin: 0;
+
+	& > a {
+		display: inline-block;
+		width: 225px;
+		// width: 250px;
+
+		& > img {
+			width: 100%;
+		}
+	}
+}
+
+
+
+
+
+/*************************************************
+ * 
+ * 
+ * PC以上のサイズ
+ * 
+ * 
+*************************************************/
+@include global.mq-pc {
+	nav > .logo {
+		width: auto;
+
+		background: none;
+		backdrop-filter: blur(0);
+
+		z-index: 6;
+		// z-index: 3;
+
+		box-shadow: none;
+	}
+
+	nav > .menu {
+		background-image: none;
+
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-end;
+
+		height: auto;
+
+		box-shadow: 0px 7px 7px -6px rgba(0, 0, 0, 0.3);
+
+		// 要確認
+		z-index: -999999;
+	}
+
+	nav > .menu li {
+		margin: 0 20px 0 0;
+		display: block;
+
+		& > a {
+			font-size: 1.6rem;
+		}
+	}
+
+	nav > .menu li.logo-menu {
+		display: none;
+	}
+}
+
+
+
+
+
+/*************************************************
+ * 
+ * 
+ * PC以上のサイズ
+ * 
+ * 
+*************************************************/
+@include global.mq-pc {
+	nav > .menu li {
+		margin: 0 40px 0 0;
+	}
+}
+
+
+
+
+
+/*********************************************
+ * 
+ * 
+ * ●●●●●●●●
+ * 
+ * 
+*********************************************/
+/*--------------------------------
+
+	●●●●●●●●
+	
+--------------------------------*/
+/* ********** ●●●●●●●● ********** */

@@ -1,0 +1,101 @@
+/*********************************************
+ * 
+ * footer
+ * 
+*********************************************/
+/*--------------------------------
+
+	use
+	
+--------------------------------*/
+@use "../global";
+
+
+
+footer {
+	background-color: global.$color-light-gray;
+}
+
+
+
+/*--------------------------------
+
+	フッター上部
+	
+--------------------------------*/
+.footer-top {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+
+	@include global.mq-tab {
+		flex-direction: row;
+	}
+
+	@include global.mq-pc {
+		width: global.$bp-pc;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	& a {
+		text-decoration: none;
+		color: black;
+		margin-bottom: 20px;
+
+		@include global.mq-tab {
+			margin-right: 50px;
+			margin-bottom: 0;
+		}
+
+		&:link,
+		&:visited {
+			color: black;
+		}
+
+		&:last-child {
+			margin-right: 0;
+			margin-bottom: 0;
+		}
+	}
+}
+
+
+
+/*--------------------------------
+
+	フッター下部
+	
+--------------------------------*/
+.footer-bottom {
+	color: global.$color-dark-red;
+	text-align: center;
+	padding: 40px 0 40px 0;
+}
+
+.footer-logo-red {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 5px;
+
+	& img {
+		width: 200px;
+	}
+}
+
+
+
+/*--------------------------------
+
+	コピーライト
+	
+--------------------------------*/
+.copyright {
+	background-color: black;
+	color: white;
+	font-size: 12px;
+	line-height: 100%;
+	text-align: center;
+	padding: 7px 0;
+}

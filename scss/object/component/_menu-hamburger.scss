@@ -1,0 +1,107 @@
+/*************************************************
+ * メニュー（ハンバーガー）
+*************************************************/
+/*--------------------------------
+
+	use
+	
+--------------------------------*/
+@use "../../global";
+
+
+
+/*********************************************
+ * 
+ * 
+ * ハンバーガーを構成する3本線
+ * 外側
+ * 
+ * 
+*********************************************/
+.toggle {
+	display: block;
+	// margin: 0 20px 0 0;
+	position: absolute;
+	inset: 30px 20px auto auto;
+
+	cursor: pointer;
+
+	z-index: 6;
+	// z-index: 3;
+}
+
+/*--------------------------------
+
+	PC以上のサイズ
+	
+--------------------------------*/
+@include global.mq-pc {
+	.toggle {
+		display: none;
+	}
+}
+
+
+
+
+
+/*********************************************
+ * 
+ * 
+ * ハンバーガーを構成する3本線
+ * 通常時
+ * 
+ * 
+*********************************************/
+.toggle span {
+	position: relative;
+	display: block;
+	height: 3px;
+	width: 25px;
+	background-color: #b23015;
+	transition: all .2s ease-out;
+}
+
+.toggle span::before,
+.toggle span::after {
+	content: '';
+    display: block;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	width: 25px;
+	background-color: #b23015;
+	transition: all .2s ease-out;
+}
+
+.toggle span::before {
+	top: -8px;
+}
+
+.toggle span::after {
+	top: 8px;
+}
+
+
+
+
+
+/*********************************************
+ * 
+ * 
+ * ハンバーガーを構成する3本線
+ * アクティブ時
+ * 
+ * 
+*********************************************/
+.toggle.active span::before {
+	transform: rotate(45deg);
+	top: 0;
+}
+.toggle.active span {
+	background: transparent;
+}
+.toggle.active span::after {
+	transform: rotate(-45deg);
+	top: 0;
+}
